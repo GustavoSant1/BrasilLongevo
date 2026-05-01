@@ -1,0 +1,460 @@
+
+/* 
+   RESET — remove estilos padrão do navegador
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 
+   BODY — base da página
+*/
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f0f4f8;
+  color: #1a1a2e;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* 
+   ROOT — container principal ocupa tela toda
+*/
+#root {
+  display: flex;
+  width: 100%;
+}
+
+/*
+   APP — layout geral (sidebar + conteúdo)
+*/
+.app {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/*
+   SIDEBAR — painel lateral fixo
+ */
+.sidebar {
+  width: 240px;
+  background: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.06);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+/* Logo dentro da sidebar */
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  color: #1565c0;
+  margin-bottom: 32px;
+}
+
+/* Quadrado azul do logo */
+.logo-box {
+  width: 30px;
+  height: 30px;
+  background: #1565c0;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/*
+   NAVEGAÇÃO — itens do menu lateral
+*/
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+/* Item do menu */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #555555;
+  font-size: 14px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-item:hover {
+  background: #e8f0fe;
+  color: #1565c0;
+}
+
+/* Item ativo (página atual) */
+.nav-item.active {
+  background: #1565c0;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Botão Novo Paciente */
+.btn-novo-paciente {
+  margin-top: 24px;
+  background: #1565c0;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-novo-paciente:hover {
+  background: #0d47a1;
+}
+
+/*
+   MAIN CONTENT — área principal do dashboard
+*/
+.main-content {
+  margin-left: 240px; /* espaço para a sidebar fixa */
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/*
+   TOPBAR — barra superior
+ */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Campo de busca */
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 10px 16px;
+  width: 320px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #555;
+  width: 100%;
+  background: transparent;
+}
+
+/* Ícones da direita */
+.topbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Botão de notificação */
+.notif-btn {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  background: #ffffff;
+  border-radius: 50%;
+  border: 1px solid #e8ecf0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Badge com número de notificações */
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #e53935;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ícone de configurações */
+.icon-settings {
+  width: 36px;
+  height: 36px;
+  background: #ffffff;
+  border-radius: 50%;
+  border: 1px solid #e8ecf0;
+  cursor: pointer;
+}
+
+/*
+   CARDS — 4 resumos no topo
+ */
+.cards-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* Card individual */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* Ícone colorido do card */
+.card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+/* Cores de fundo dos ícones */
+.card-icon.blue   { background: #bbdefb; }
+.card-icon.green  { background: #c8e6c9; }
+.card-icon.yellow { background: #fff9c4; }
+.card-icon.red    { background: #ffcdd2; }
+
+/* Texto do card */
+.card-info p {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.card-info strong {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+/* Cores dos números */
+.card-info strong.green  { color: #2e7d32; }
+.card-info strong.yellow { color: #f57f17; }
+.card-info strong.red    { color: #c62828; }
+
+/*
+   TABELA DE PACIENTES
+ */
+.table-container {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* Cabeçalho da tabela */
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.table-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Botão adicionar paciente */
+.btn-adicionar {
+  background: #1565c0;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-adicionar:hover {
+  background: #0d47a1;
+}
+
+/* Tabela */
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Títulos das colunas */
+.tabela th {
+  text-align: left;
+  font-size: 13px;
+  color: #999;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Células */
+.tabela td {
+  padding: 14px;
+  font-size: 14px;
+  border-bottom: 1px solid #f8f8f8;
+  vertical-align: middle;
+}
+
+/* Coluna de paciente */
+.td-paciente {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.paciente-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.paciente-info strong { font-size: 14px; }
+.paciente-info span   { font-size: 12px; color: #999; }
+
+/* Avatar com inicial do nome */
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #c5cae9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #3949ab;
+  flex-shrink: 0;
+}
+
+/* Item de medicamento */
+.med-item {
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 2px;
+}
+
+/* Dose atrasada — em vermelho */
+.dose-urgente {
+  color: #e53935;
+  font-weight: 600;
+}
+
+/*
+   BADGES DE STATUS
+*/
+.status-badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-em-dia   { background: #e8f5e9; color: #2e7d32; }
+.status-parcial  { background: #fff8e1; color: #f57f17; }
+.status-atrasado { background: #ffebee; color: #c62828; }
+.status-urgente  { background: #ffebee; color: #b71c1c; }
+
+/* Botão ver detalhes */
+.btn-detalhes {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  color: #333;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-detalhes:hover {
+  border-color: #1565c0;
+  color: #1565c0;
+}
+
+/*
+   LEGENDA — rodapé da tabela
+ */
+.legenda {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.legenda span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #555;
+}
+
+/* Bolinhas coloridas */
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.dot.green  { background: #4caf50; }
+.dot.yellow { background: #ffb300; }
+.dot.red    { background: #e53935; }
+
+/* Botão exportar */
+.btn-exportar {
+  margin-left: auto;
+  background: #ffffff;
+  border: 2px solid #1565c0;
+  color: #1565c0;
+  border-radius: 8px;
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-exportar:hover {
+  background: #e3f2fd;
+}
