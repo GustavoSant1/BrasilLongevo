@@ -1,12 +1,12 @@
-// ============================================================
+
 // COMPONENTE — src/components/StatusBadge.tsx
 // Badge colorido que aparece em vários lugares:
 // na tabela de pacientes e dentro do modal de detalhes.
 // Por isso fica em um arquivo separado (evita repetição).
-// ============================================================
+
 
 import { CheckCircle, AlertCircle, Clock, AlertTriangle } from "lucide-react";
-import type { PatientStatus } from "../types/patient";
+import type { PatientStatus } from "../types/Patient";
 
 // Cada status tem: texto, cor do texto, cor de fundo e ícone
 export const STATUS_CONFIG = {

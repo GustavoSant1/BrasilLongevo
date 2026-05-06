@@ -6,7 +6,7 @@
 // ============================================================
 
 import { Pill, Clock, Eye, Edit3, Trash2, Plus } from "lucide-react";
-import type { Patient } from "../types/patient";
+import type { Patient } from "../types/Patient";
 import StatusBadge from "./Statusbadge";
 
 interface Props {
@@ -62,7 +62,7 @@ export default function TabelaPacientes({
             border: "none",
             borderRadius: 12,
             background: "linear-gradient(135deg, #1d4ed8, #3b82f6)",
-            color: "#fff",
+            color: "#ffffff",
             fontWeight: 700,
             fontSize: 13,
             cursor: "pointer",
@@ -195,7 +195,7 @@ function PatientRow({ patient, isEven, onView, onEdit, onDelete }: RowProps) {
             key={condition}
             style={{
               fontSize: 12,
-              color: "#475569",
+              color: "#508adb",
               display: "flex",
               alignItems: "center",
               gap: 4,

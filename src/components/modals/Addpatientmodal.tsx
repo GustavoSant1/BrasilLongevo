@@ -2,14 +2,8 @@
 // COMPONENTE — src/components/modals/AddPatientModal.tsx  (novo)
 // Formulário para adicionar um novo paciente.
 // Ao salvar, chama onSave() com o objeto do novo paciente.
-//
-//  PARA SALVAR NA API:
-// Dentro de handleSave(), adicione antes do onSave():
-//   await fetch("https://sua-api.com/patients", {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify(newPatient),
-//   });
+
+
 
 
 import { useState } from "react";
@@ -17,7 +11,7 @@ import {
   X, Plus, User, Phone, MapPin, Calendar,
   Stethoscope, Activity, ClipboardList, Save,
 } from "lucide-react";
-import type { Patient } from "../../types/patient";
+import type { Patient } from "../../types/Patient";
 interface Props {
   onClose: () => void;
   onSave: (patient: Patient) => void;

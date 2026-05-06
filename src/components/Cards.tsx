@@ -41,7 +41,7 @@ export default function Cards({ total, onTime, late, urgent }: Props) {
             background: "#fff",
             borderRadius: 16,
             padding: "18px 20px",
-            boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
+            boxShadow: "0 1px 4px rgba(255, 255, 255, 0.06)",
             display: "flex",
             alignItems: "center",
             gap: 14,

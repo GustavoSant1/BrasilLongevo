@@ -5,7 +5,7 @@
 // ============================================================
 
 import { Bell, X, CheckCircle, Eye } from "lucide-react";
-import type { Patient } from "../types/patient";
+import type { Patient } from "../types/Patient";
 import StatusBadge, { STATUS_CONFIG } from "./Statusbadge";
 
 interface Props {

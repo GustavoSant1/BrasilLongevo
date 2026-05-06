@@ -3,7 +3,7 @@
 // Lista inicial de pacientes.
 
  
-import type { Patient } from "../types/patient";
+import type { Patient } from "../types/Patient";
 
 export const PATIENTS_DATA: Patient[] = [
   {

@@ -1,15 +1,15 @@
-// ============================================================
+
 // COMPONENTE — src/components/modals/PatientModal.tsx  (novo)
 // Modal de detalhes do paciente. Abre ao clicar em "Ver".
 // Mostra: info pessoal, condições, medicamentos com doses,
 // observações e status geral.
-// ============================================================
+
 
 import {
   X, Edit3, Phone, MapPin, Calendar, Stethoscope,
   Activity, Pill, CheckCircle, FileText,
 } from "lucide-react";
-import type { Patient } from "../../types/patient";
+import type { Patient } from "../../types/Patient";
 import StatusBadge from "../Statusbadge";
 
 interface Props {
@@ -29,7 +29,7 @@ export default function PatientModal({ patient, onClose, onEdit }: Props) {
       style={{
         position: "fixed",
         inset: 0,
-        background: "rgba(15,23,42,0.55)",
+        background: "rgba(255, 255, 255, 0.55)",
         zIndex: 100,
         display: "flex",
         alignItems: "center",
@@ -55,7 +55,7 @@ export default function PatientModal({ patient, onClose, onEdit }: Props) {
         {/* Cabeçalho azul */}
         <div
           style={{
-            background: "linear-gradient(135deg, #1d4ed8, #3b82f6)",
+            background: "linear-gradient(135deg, #000000, #3b82f6)",
             borderRadius: "20px 20px 0 0",
             padding: "24px 28px",
             display: "flex",

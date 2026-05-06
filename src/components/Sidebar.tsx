@@ -37,7 +37,7 @@ export default function Sidebar({ activeNav, onNavChange, onAddPatient }: Props)
       {/* Logo */}
       <div
         style={{
-          padding: "22px 20px",
+          padding: "25px 22px",
           display: "flex",
           alignItems: "center",
           gap: 10,
@@ -49,7 +49,7 @@ export default function Sidebar({ activeNav, onNavChange, onAddPatient }: Props)
             width: 36,
             height: 36,
             borderRadius: 10,
-            background: "linear-gradient(135deg, #1d4ed8, #3b82f6)",
+            background: "linear-gradient(135deg, #000000, #3b82f6)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -57,8 +57,8 @@ export default function Sidebar({ activeNav, onNavChange, onAddPatient }: Props)
         >
           <Heart size={18} color="#fff" />
         </div>
-        <span style={{ fontSize: 14, fontWeight: 700, color: "#1e293b" }}>
-          Controle de Pacientes
+        <span style={{ fontSize: 14, fontWeight: 730, color: "#1e293b" }}>
+          <h3>Controle de Pacientes</h3>
         </span>
       </div>
 
@@ -81,7 +81,7 @@ export default function Sidebar({ activeNav, onNavChange, onAddPatient }: Props)
                 cursor: "pointer",
                 marginBottom: 4,
                 background: isActive
-                  ? "linear-gradient(135deg, #1d4ed8, #3b82f6)"
+                  ? "linear-gradient(135deg, #000000, #3b82f6)"
                   : "transparent",
                 color: isActive ? "#fff" : "#64748b",
                 fontWeight: isActive ? 700 : 500,
@@ -108,7 +108,7 @@ export default function Sidebar({ activeNav, onNavChange, onAddPatient }: Props)
             padding: "11px 14px",
             borderRadius: 12,
             border: "none",
-            background: "linear-gradient(135deg, #1d4ed8, #3b82f6)",
+            background: "linear-gradient(135deg, #000000, #3b82f6)",
             color: "#fff",
             fontWeight: 700,
             fontSize: 13,

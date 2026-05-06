@@ -51,7 +51,7 @@ export default function Topbar({
           style={{
             width: "100%",
             padding: "10px 12px 10px 36px",
-            border: "1.5px solid #e2e8f0",
+            border: "1.5px solid #ffffff",
             borderRadius: 12,
             fontSize: 13,
             outline: "none",
@@ -141,7 +141,7 @@ export default function Topbar({
             cursor: "pointer",
           }}
         >
-          A
+          
         </div>
       </div>
     </header>

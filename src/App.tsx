@@ -8,8 +8,8 @@
 //   Componentes filhos → callbacks (onXxx) → App.tsx atualiza estado
 
 import { useState, useEffect } from "react";
-import type { Patient } from "./types/patient";
-import { PATIENTS_DATA } from "./datas/patients";
+import type { Patient } from "./types/Patient";
+import { PATIENTS_DATA } from "./datas/Patients";
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
 import Cards from "./components/Cards";
