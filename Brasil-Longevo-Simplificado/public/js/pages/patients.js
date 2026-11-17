@@ -1,0 +1,13 @@
+// Página isolada para facilitar manutenção.
+import {escapeHtml as E,icon,formatDate,formatWhen,badge,riskBadge,appointmentBadge,occurrenceBadge,empty} from '../utils.js';
+import {staff,action,link,title,stat,card,actionButton} from '../ui.js';
+
+export function patientsView(state){
+ const patients=state.patients||[];
+ const list=patients.filter(p=>(`${p.name} ${p.conditions} ${p.unit_name}`).toLowerCase().includes(state.search.toLowerCase())&&(state.filter==='todos'||p.risk===state.filter));
+ const search=`<div class="tools"><label class="search">${icon('search',18)}<input data-search value="${E(state.search)}" placeholder="Buscar paciente, condição ou unidade" aria-label="Buscar pacientes"></label><label class="sr-only" for="risk-filter">Prioridade</label><select id="risk-filter" data-filter><option value="todos">Todas as prioridades</option>${[['alto','Alta'],['moderado','Moderada'],['baixo','Baixa']].map(([k,n])=>`<option value="${k}" ${state.filter===k?'selected':''}>${n}</option>`).join('')}</select></div>`;
+ const rows=list.map((p,i)=>`<tr><td><div class="person"><span class="avatar">${E(p.name.split(' ').slice(0,2).map(x=>x[0]).join(''))}</span><div><b>${E(p.name)}</b><small>${p.age??'—'} anos</small></div></div></td><td>${E(p.conditions||'Não informado')}</td><td>${E(p.caregiver_name||'—')}</td><td>${E(p.unit_name)}</td><td>${riskBadge(p.risk)}</td><td class="end">${actionButton('view-patient',p.id,'eye','Ver ficha')}${actionButton('edit-patient',p.id,'edit','Editar paciente')}${state.user.role==='admin'?actionButton('archive-patient',p.id,'trash','Arquivar paciente'):''}</td></tr>`).join('');
+ return title('Gestão de pessoas','Controle de pacientes','Cadastros e informações organizadas para a equipe.',action('new-patient',`${icon('plus',17)} Novo paciente`))+
+ `<div class="stats-grid">${stat('Total de pacientes',patients.length,'users')}${stat('Prioridade alta',patients.filter(p=>p.risk==='alto').length,'alert','red')}${stat('Prioridade moderada',patients.filter(p=>p.risk==='moderado').length,'clock','amber')}${stat('Baixa prioridade',patients.filter(p=>p.risk==='baixo').length,'check','green')}</div>`+
+ `<section class="card table-card"><div class="card-title"><div><h2>Lista de pacientes</h2><p>${list.length} encontrados</p></div></div>${search}<div class="table-scroll"><table><thead><tr><th>Paciente</th><th>Condições acompanhadas</th><th>Cuidador</th><th>Unidade</th><th>Prioridade</th><th class="end">Ações</th></tr></thead><tbody>${rows||`<tr><td colspan="6">${empty('Nenhum paciente encontrado.')}</td></tr>`}</tbody></table></div><div class="table-bottom">Dados demonstrativos · Acesso controlado pela equipe</div></section>`;
+}

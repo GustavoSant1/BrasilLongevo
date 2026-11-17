@@ -1,0 +1,14 @@
+{
+  "name": "brasil-longevo-simplificado",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Demonstração acadêmica de acompanhamento domiciliar - sem módulo de medicamentos",
+  "engines": {"node": ">=22.13.0"},
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test tests/*.test.js",
+    "reset:demo": "node server/reset.js"
+  },
+  "license": "UNLICENSED"
+}

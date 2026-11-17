@@ -1,0 +1,13 @@
+// Página isolada para facilitar manutenção.
+import {escapeHtml as E,icon,formatDate,formatWhen,badge,riskBadge,appointmentBadge,occurrenceBadge,empty} from '../utils.js';
+import {staff,action,link,title,stat,card,actionButton} from '../ui.js';
+
+function visits(items){return items.length?items.map(a=>`<div class="visit"><div class="date-square"><b>${E(a.at.slice(8,10))}</b><span>${formatDate(a.at).slice(3,5)}</span></div><div class="visit-info"><strong>${E(a.kind)}</strong><small>${E(a.patient_name)} · ${E(a.professional||'Equipe não definida')}</small><small>${formatWhen(a.at)}</small></div>${appointmentBadge(a.status)}</div>`).join(''):empty('Nenhum atendimento encontrado.');}
+function incidentRows(items){return items.length?items.map(o=>`<div class="incident"><div class="incident-mark">${icon('clipboard',20)}</div><div><strong>${E(o.patient_name)}</strong><p>${E(o.description)}</p><small>Registrado em ${formatDate(o.created_at)} · ${E(o.requester_name)}</small></div>${occurrenceBadge(o.status)}</div>`).join(''):empty('Nenhuma ocorrência registrada.');}
+export function dashboardView(state){
+ const s=state.dashboard?.stats||{patients:0,highRisk:0,scheduled:0,openOccurrences:0};const limited=!staff(state.user);
+ return title('Painel de acompanhamento',limited?'Meu acompanhamento':'Visão geral do cuidado',limited?'Confira seus próximos compromissos e registros.':'Veja rapidamente o que precisa de atenção hoje.',limited?action('new-occurrence',`${icon('plus',17)} Registrar ocorrência`):action('new-patient',`${icon('plus',17)} Adicionar paciente`))+
+ `<section class="hero"><div><span>${limited?'Bem-vindo ao Brasil Longevo':'Bem-vindo ao Brasil Longevo'}</span><h2>${limited?'Mais clareza para o seu dia.':'Cuidar bem começa com informação clara.'}</h2><p>${limited?'Acompanhe seus atendimentos e converse com a equipe responsável.':'Pacientes, consultas e ocorrências organizados em um espaço fácil de usar.'}</p>${action('go-appointments',`${icon('calendar',17)} Ver atendimentos`,'white')}</div><div class="hero-art">${icon('heart',86)}</div></section>
+ <div class="stats-grid">${stat(limited?'Pessoas acompanhadas':'Pacientes acompanhados',s.patients,'users')}${stat('Atendimentos agendados',s.scheduled,'calendar','green')}${stat('Ocorrências em aberto',s.openOccurrences,'clipboard','amber')}${stat('Prioridade alta',s.highRisk,'alert','red')}</div>
+ <div class="home-grid">${card('Próximos atendimentos','Consultas e visitas da equipe',visits(state.dashboard?.appointments||[]),link('atendimentos','Ver agenda'))}${card('Ocorrências recentes','Registros aguardando acompanhamento',incidentRows(state.dashboard?.occurrences||[]),link('ocorrencias','Ver ocorrências'))}</div>`;
+}
